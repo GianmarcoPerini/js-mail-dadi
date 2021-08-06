@@ -1,20 +1,42 @@
-const accessoConsentito = ["Marco", "Giovanni", "Laura", "Francesca", "Joele", "Michael", "John", "Gianmarco"];
-let verificaAccesso = prompt("Inserisci il tuo nome");
+const accessoConsentito = ["Marco","Giovanni","Laura","Francesca","Joele","Michael","John","Gianmarco"];
+let verificaAccesso = prompt("Inserisci il tuo nome, se sei in lista potrei GIOCARE");
+let sceltaNumero;
 let playerTwo;
 let playerOne;
 
-for (i = 0; i < accessoConsentito.length; i++){
+for (i = 0; i < accessoConsentito.length; i++)
+
+
     if(verificaAccesso == accessoConsentito[i]){
-        let sceltaNumero =parseInt(prompt("scegli un numero a tuo piacimento"))
+        sceltaNumero =parseInt(prompt("Inserisci il tuo numero preferito"))
         playerOne = parseInt(((Math.random()*sceltaNumero)+ 1))
         playerTwo = parseInt(((Math.random()*sceltaNumero)+ 1))
         document.getElementById("player-one").innerHTML = playerOne
         document.getElementById("player-two").innerHTML = playerTwo
-    } else if(playerOne > playerTwo){
-        document.getElementById("risultato").innerHTML = "HAI VINTOOOO"
+
+        if (Number.isNaN(sceltaNumero)){
+            alert ("Ti ho detto di scegliere un NUMERO. Ora il computer sceglierà randomicamente un numero al posto tuo")
+            let playerOne = parseInt(((Math.random()*100) + 1))
+            let playerTwo = parseInt(((Math.random()*100) + 1))
+            document.getElementById("player-one").innerHTML = playerOne
+            document.getElementById("player-two").innerHTML = playerTwo
+                if (playerOne > playerTwo){
+                    document.getElementById("risultato-si").innerHTML = "HAI VINTOOOO"
+                } else if (playerOne < playerTwo){
+                    document.getElementById("risultato-no").innerHTML = "Andrà meglio la prossima volta :("
+                } else if(playerOne = playerTwo){
+                    document.getElementById("risultato").innerHTML = "BRAVI TUTTIIIIII"
+                }
+        }
+    }
+
+
+
+    if (playerOne > playerTwo){
+        document.getElementById("risultato-si").innerHTML = "HAI VINTOOOO"
     } else if (playerOne < playerTwo){
-        document.getElementById("risultato").innerHTML = "Andrà meglio la prossima volta :("
+        document.getElementById("risultato-no").innerHTML = "Andrà meglio la prossima volta :("
     } else if(playerOne = playerTwo){
         document.getElementById("risultato").innerHTML = "BRAVI TUTTIIIIII"
     }
-}
+    
